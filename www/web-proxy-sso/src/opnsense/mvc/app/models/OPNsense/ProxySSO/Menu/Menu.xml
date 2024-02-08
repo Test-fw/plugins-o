@@ -1,0 +1,7 @@
+<menu>
+    <Services>
+        <SquidWebProxy>
+            <ProxySSO VisibleName="Single Sign-On" order="26" url="/ui/proxysso" />
+        </SquidWebProxy>
+    </Services>
+</menu>

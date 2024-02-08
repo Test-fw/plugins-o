@@ -1,0 +1,8 @@
+<menu>
+  <Services>
+    <BIND cssClass="fa fa-tags">
+      <Configuration url="/ui/bind/general/index"/>
+      <LogFiles VisibleName="Log Files" url="/ui/bind/logs"/>
+    </BIND>
+  </Services>
+</menu>

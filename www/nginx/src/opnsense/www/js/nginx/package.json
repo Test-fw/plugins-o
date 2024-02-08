@@ -1,0 +1,17 @@
+{
+  "name": "nginx",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "lodash-template-webpack-loader": "^1.0.2",
+    "eslint": "^6.2.2",
+    "webpack-cli": "^3.3.6",
+    "raw-loader": "^0.5.1",
+    "webpack": "^4.35.3"
+  },
+  "scripts": {
+    "webpack-cli": "webpack-cli",
+    "build": "webpack-cli --config webpack.conf.js",
+    "build-dev": "webpack-cli --config webpack.conf.js --mode development"
+  }
+}

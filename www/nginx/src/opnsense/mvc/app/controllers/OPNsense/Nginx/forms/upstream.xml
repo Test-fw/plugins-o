@@ -1,0 +1,98 @@
+<form>
+  <field>
+    <id>upstream.description</id>
+    <label>Description</label>
+    <type>text</type>
+  </field>
+  <field>
+    <id>upstream.serverentries</id>
+    <label>Server Entries</label>
+    <style>selectpicker</style>
+    <type>select_multiple</type>
+  </field>
+  <field>
+    <id>upstream.load_balancing_algorithm</id>
+    <label>Load Balancing Algorithm</label>
+    <style>selectpicker</style>
+    <type>dropdown</type>
+  </field>
+  <field>
+    <id>upstream.proxy_protocol</id>
+    <label>PROXY Protocol</label>
+    <type>checkbox</type>
+    <advanced>true</advanced>
+    <help>If you enable the proxy protocol, an upstream proxy or server will get the client IP and the server port before the real traffic is sent.</help>
+  </field>
+  <field>
+    <id>upstream.host_port</id>
+    <label>Host header port</label>
+    <type>text</type>
+    <advanced>true</advanced>
+    <help>Add this port value to the Host header. Not used by default.</help>
+  </field>
+  <field>
+    <id>upstream.x_forwarded_host_verbatim</id>
+    <label>XFH: Use original Host header</label>
+    <help>Use Host header value from the client request ($http_host) for X-Forwarded-Host header. $host variable is used by default. Enabling this may cause incorrect behavior in case of malicious requests such as incorrect hostnames being logged or invalid redirects being performed.</help>
+    <advanced>true</advanced>
+    <type>checkbox</type>
+  </field>
+  <field>
+    <id>upstream.tls_enable</id>
+    <label>Enable TLS (HTTPS)</label>
+    <help>Use TLS (HTTPS) to connect to the server.</help>
+    <type>checkbox</type>
+  </field>
+  <field>
+    <id>upstream.tls_client_certificate</id>
+    <label>TLS: Client Certificate</label>
+    <advanced>true</advanced>
+    <help>Authenticate on the Server using a client certificate.</help>
+    <style>selectpicker</style>
+    <type>dropdown</type>
+  </field>
+  <field>
+    <id>upstream.tls_name_override</id>
+    <label>TLS: Servername override</label>
+    <help>Force a specific hostname for the backend connection instead of passing the hostname from the downstream connection to the upstream connection.</help>
+    <type>text</type>
+  </field>
+  <field>
+    <id>upstream.tls_protocol_versions</id>
+    <label>TLS: Supported Versions</label>
+    <style>selectpicker</style>
+    <type>select_multiple</type>
+  </field>
+  <field>
+    <id>upstream.tls_session_reuse</id>
+    <label>TLS: Session Reuse</label>
+    <type>checkbox</type>
+  </field>
+  <field>
+    <id>upstream.tls_trusted_certificate</id>
+    <label>TLS: Trusted Certificate</label>
+    <style>selectpicker</style>
+    <type>select_multiple</type>
+  </field>
+  <field>
+    <id>upstream.tls_verify</id>
+    <label>TLS: Verify Certificate</label>
+    <type>checkbox</type>
+    <advanced>true</advanced>
+    <help>Don't turn it off unless you really know what you are doing! Never do it because a random website tells you to do.</help>
+  </field>
+  <field>
+    <id>upstream.tls_verify_depth</id>
+    <label>TLS: Verify Depth</label>
+    <type>text</type>
+    <advanced>true</advanced>
+    <help>Choose how many sub-CAs can be between the server certificate and a trusted CA. 1 means the certificate has to be signed directly by a CA.</help>
+  </field>
+  <field>
+    <id>upstream.store</id>
+    <label>Store</label>
+    <advanced>true</advanced>
+    <type>checkbox</type>
+    <help>Store the response on the local storage.</help>
+  </field>
+</form>

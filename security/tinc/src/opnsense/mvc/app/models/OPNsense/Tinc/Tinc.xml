@@ -1,0 +1,186 @@
+<model>
+    <mount>//OPNsense/Tinc</mount>
+    <version>1.0.4</version>
+    <description>
+        OPNsense Tinc VPN
+    </description>
+    <items>
+        <networks>
+            <network type="ArrayField">
+                <id type="AutoNumberField">
+                    <ValidationMessage>ID should be a number.</ValidationMessage>
+                    <Required>Y</Required>
+                </id>
+                <name type="TextField">
+                    <Required>Y</Required>
+                    <mask>/^([0-9a-zA-Z]){1,50}$/u</mask>
+                    <ValidationMessage>The name should contain only alphanumeric characters.</ValidationMessage>
+                </name>
+                <hostname type="TextField">
+                    <Required>Y</Required>
+                    <mask>/^([0-9a-zA-Z\_]){1,1024}$/u</mask>
+                    <ValidationMessage>Please specify a valid hostname.</ValidationMessage>
+                </hostname>
+                <extaddress type="HostnameField">
+                    <Required>N</Required>
+                    <IpAllowed>Y</IpAllowed>
+                    <FieldSeparator>,</FieldSeparator>
+                    <AsList>Y</AsList>
+                </extaddress>
+                <extport type="IntegerField">
+                    <Required>Y</Required>
+                    <Default>655</Default>
+                    <MinimumValue>1</MinimumValue>
+                    <MaximumValue>65535</MaximumValue>
+                    <ValidationMessage>Port number must be between 1...65535</ValidationMessage>
+                </extport>
+                <intaddress type="NetworkField">
+                    <Required>Y</Required>
+                    <WildcardEnabled>N</WildcardEnabled>
+                </intaddress>
+                <subnet type="NetworkField">
+                    <Required>N</Required>
+                    <WildcardEnabled>N</WildcardEnabled>
+                    <NetMaskRequired>Y</NetMaskRequired>
+                    <FieldSeparator>,</FieldSeparator>
+                    <AsList>Y</AsList>
+                    <Constraints>
+                        <check001>
+                            <ValidationMessage>Subnet field must be set in router mode.</ValidationMessage>
+                            <type>SetIfConstraint</type>
+                            <field>mode</field>
+                            <check>router</check>
+                        </check001>
+                    </Constraints>
+                </subnet>
+                <pingtimeout type="IntegerField">
+                    <Required>Y</Required>
+                    <Default>5</Default>
+                    <MinimumValue>1</MinimumValue>
+                    <MaximumValue>65535</MaximumValue>
+                    <ValidationMessage>Ping timeout must be between 1...65535</ValidationMessage>
+                </pingtimeout>
+                <StrictSubnets type="BooleanField">
+                    <Default>0</Default>
+                    <Required>Y</Required>
+                </StrictSubnets>
+                <privkey type="TextField">
+                    <Required>Y</Required>
+                </privkey>
+                <pubkey type="TextField">
+                    <Required>Y</Required>
+                </pubkey>
+                <cipher type="JsonKeyValueStoreField">
+                    <Required>Y</Required>
+                    <ConfigdPopulateAct>tinc list ciphers</ConfigdPopulateAct>
+                    <SourceFile>/tmp/tinc_current_cipher_options.index</SourceFile>
+                    <Default>aes-256-cbc</Default>
+                </cipher>
+                <mode type="OptionField">
+                  <Required>Y</Required>
+                  <Default>router</Default>
+                  <OptionValues>
+                      <router>router</router>
+                      <switch>switch</switch>
+                  </OptionValues>
+                  <Constraints>
+                      <check001>
+                          <reference>subnet.check001</reference>
+                      </check001>
+                  </Constraints>
+                </mode>
+                <PMTUDiscovery type="BooleanField">
+                    <Default>1</Default>
+                    <Required>Y</Required>
+                </PMTUDiscovery>
+                <enabled type="BooleanField">
+                    <Default>1</Default>
+                    <Required>Y</Required>
+                </enabled>
+                <debuglevel type="OptionField">
+                    <Required>Y</Required>
+                    <Default>ip</Default>
+                    <OptionValues>
+                        <d0>[0] start/stop, serious errors</d0>
+                        <d1>[1] +all connections</d1>
+                        <d2>[2] +script status</d2>
+                        <d3>[3] +all requests</d3>
+                        <d4>[4] +meta socket</d4>
+                        <d5>[5] +network traffic</d5>
+                    </OptionValues>
+                    <ValidationMessage>debug level needs to be between 0 (default) and 5 (highest)</ValidationMessage>
+                </debuglevel>
+            </network>
+        </networks>
+        <hosts>
+            <host type="ArrayField">
+                <network type="ModelRelationField">
+                    <Model>
+                        <hosts>
+                            <source>OPNsense.Tinc.Tinc</source>
+                            <items>networks.network</items>
+                            <display>name</display>
+                        </hosts>
+                    </Model>
+                    <ValidationMessage>Related network not found</ValidationMessage>
+                    <Required>Y</Required>
+                </network>
+                <hostname type="TextField">
+                    <Required>Y</Required>
+                    <mask>/^([0-9a-zA-Z\_]){1,1024}$/u</mask>
+                    <ValidationMessage>Please specify a valid hostname.</ValidationMessage>
+                </hostname>
+                <extport type="IntegerField">
+                    <Required>Y</Required>
+                    <Default>655</Default>
+                    <MinimumValue>1</MinimumValue>
+                    <MaximumValue>65535</MaximumValue>
+                    <ValidationMessage>Port number must be between 1...65535</ValidationMessage>
+                </extport>
+                <extaddress type="HostnameField">
+                    <Required>N</Required>
+                    <IpAllowed>Y</IpAllowed>
+                    <FieldSeparator>,</FieldSeparator>
+                    <AsList>Y</AsList>
+                    <Constraints>
+                        <check001>
+                            <ValidationMessage>Need external address if you intend to "Connect To" this host</ValidationMessage>
+                            <type>SetIfConstraint</type>
+                            <field>connectTo</field>
+                            <check>1</check>
+                        </check001>
+                    </Constraints>
+                </extaddress>
+                <subnet type="NetworkField">
+                    <Required>N</Required>
+                    <WildcardEnabled>N</WildcardEnabled>
+                    <NetMaskRequired>Y</NetMaskRequired>
+                    <FieldSeparator>,</FieldSeparator>
+                    <AsList>Y</AsList>
+                </subnet>
+                <pubkey type="TextField">
+                    <Required>Y</Required>
+                </pubkey>
+                <cipher type="JsonKeyValueStoreField">
+                    <Required>Y</Required>
+                    <ConfigdPopulateAct>tinc list ciphers</ConfigdPopulateAct>
+                    <SourceFile>/tmp/tinc_current_cipher_options.index</SourceFile>
+                    <Default>aes-256-cbc</Default>
+                </cipher>
+                <connectTo type="BooleanField">
+                    <Default>1</Default>
+                    <Required>Y</Required>
+                    <Constraints>
+                        <check001>
+                            <reference>extaddress.check001</reference>
+                        </check001>
+                    </Constraints>
+                </connectTo>
+                <enabled type="BooleanField">
+                    <Default>1</Default>
+                    <Required>Y</Required>
+                </enabled>
+            </host>
+        </hosts>
+    </items>
+</model>

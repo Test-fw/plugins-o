@@ -1,0 +1,5 @@
+<menu>
+   <Services>
+      <MDNSRepeater VisibleName="mDNS Repeater" cssClass="fa fa-forward fa-fw" url="/ui/mdnsrepeater"/>
+   </Services>
+</menu>

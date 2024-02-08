@@ -1,0 +1,194 @@
+<form>
+    <field>
+        <id>input.cpu</id>
+        <label>CPU</label>
+        <type>checkbox</type>
+        <help>Read metrics about CPU usage.</help>
+    </field>
+    <field>
+        <id>input.cpu_percpu</id>
+        <label>Per-CPU</label>
+        <type>checkbox</type>
+        <help>Whether to report Per-CPU stats or not.</help>
+    </field>
+    <field>
+        <id>input.cpu_totalcpu</id>
+        <label>Total CPU</label>
+        <type>checkbox</type>
+        <help>Whether to report total system CPU stats or not.</help>
+    </field>
+    <field>
+        <id>input.collect_cpu_time</id>
+        <label>Collect CPU Time</label>
+        <type>checkbox</type>
+        <help>If true, collect raw CPU time metrics.</help>
+    </field>
+    <field>
+        <id>input.disk</id>
+        <label>Disk</label>
+        <type>checkbox</type>
+        <help>Read metrics about disk usage by mount point.</help>
+    </field>
+    <field>
+        <id>input.disk_mount_points</id>
+        <label>Disk Mount Points</label>
+        <type>text</type>
+        <help>By default, Telegraf gather stats for all mountpoints. Setting mountpoints will restrict the stats to the specified mountpoints.</help>
+    </field>
+    <field>
+        <id>input.disk_ignore_fs</id>
+        <label>Disk Ignore FS</label>
+        <style>tokenize</style>
+        <type>select_multiple</type>
+        <allownew>true</allownew>
+        <help>Ignore some mountpoints by filesystem type. For example (dev)tmpfs (usually present on /run, /var/run, /dev/shm or /dev).</help>
+    </field>
+    <field>
+        <id>input.diskio</id>
+        <label>Disk IO</label>
+        <type>checkbox</type>
+        <help>Read metrics about disk IO by device.</help>
+    </field>
+    <field>
+        <id>input.internet_speed</id>
+        <label>Internet Speed Test</label>
+        <type>checkbox</type>
+        <help>Enable the collection of data about the internet speed on the system.</help>
+    </field>
+    <field>
+        <id>input.internet_speed_file</id>
+        <label>Internet Speed File Download</label>
+        <type>checkbox</type>
+        <help>Enable the file download speed test.</help>
+    </field>
+    <field>
+        <id>input.internet_speed_interval</id>
+        <label>Interval</label>
+        <type>text</type>
+        <help>Default internet speed test interval in seconds.</help>
+    </field>
+    <field>
+        <id>input.mem</id>
+        <label>Memory</label>
+        <type>checkbox</type>
+        <help>Read metrics about memory usage.</help>
+    </field>
+    <field>
+        <id>input.processes</id>
+        <label>Processes</label>
+        <type>checkbox</type>
+        <help>Get the number of processes and group them by status.</help>
+    </field>
+    <field>
+        <id>input.swap</id>
+        <label>Swap</label>
+        <type>checkbox</type>
+        <help>Read metrics about swap memory usage.</help>
+    </field>
+    <field>
+        <id>input.system</id>
+        <label>System</label>
+        <type>checkbox</type>
+        <help>Read metrics about system load and uptime.</help>
+    </field>
+    <field>
+        <id>input.network</id>
+        <label>Network</label>
+        <type>checkbox</type>
+        <help>Read network interface metrics.</help>
+    </field>
+    <field>
+        <id>input.pf</id>
+        <label>PF</label>
+        <type>checkbox</type>
+        <help>Read PF values via pfctl.</help>
+    </field>
+    <field>
+        <id>input.ping</id>
+        <label>Ping (IPv4)</label>
+        <type>checkbox</type>
+        <help>Ping Hosts using IPv4 and measure the metrics.</help>
+    </field>
+    <field>
+        <id>input.ping_count</id>
+        <label>Ping Count (IPv4)</label>
+        <type>text</type>
+        <help>Number of ping packets to send per interval. Corresponds to the "-c" option of the ping command.</help>
+    </field>
+    <field>
+        <id>input.ping_hosts</id>
+        <label>Ping Hosts (IPv4)</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help>Set the Hosts to ping using IPv4 in a CSV list.</help>
+    </field>
+    <field>
+        <id>input.ping6</id>
+        <label>Ping (IPv6)</label>
+        <type>checkbox</type>
+        <help>Ping Hosts using IPv6 and measure the metrics.</help>
+    </field>
+    <field>
+        <id>input.ping6_count</id>
+        <label>Ping Count (IPv6)</label>
+        <type>text</type>
+        <help>Number of ping packets to send per interval. Corresponds to the "-c" option of the ping command.</help>
+    </field>
+    <field>
+        <id>input.ping6_hosts</id>
+        <label>Ping Hosts (IPv6)</label>
+        <type>select_multiple</type>
+        <style>tokenize</style>
+        <allownew>true</allownew>
+        <help>Set the Hosts to ping using IPv6 in a CSV list.</help>
+    </field>
+    <field>
+        <id>input.haproxy</id>
+        <label>HAProxy</label>
+        <type>checkbox</type>
+        <help>Enable the collection of HAProxy statistics.</help>
+    </field>
+    <field>
+        <id>input.zfs</id>
+        <label>ZFS</label>
+        <type>checkbox</type>
+        <help>Enable the collection of ZFS statistics.</help>
+    </field>
+    <field>
+        <id>input.ntpq</id>
+        <label>NTPQ</label>
+        <type>checkbox</type>
+        <help>Enable the collection of NTP query metrics.</help>
+    </field>
+    <field>
+        <id>input.ntpq_dns_lookup</id>
+        <label>NTPQ DNS Lookup</label>
+        <type>checkbox</type>
+        <help>Can increase metric gather times.</help>
+    </field>
+    <field>
+        <id>input.intrusion_detection_alerts</id>
+        <label>Intrusion Dectection Alerts</label>
+        <type>checkbox</type>
+        <help>Requires Intrustion detection alerts are stored locally.</help>
+    </field>
+    <field>
+        <id>input.unbound</id>
+        <label>Unbound</label>
+        <type>checkbox</type>
+        <help>Enable the collection of Unbound metrics.</help>
+    </field>
+    <field>
+        <id>input.apcupsd</id>
+        <label>Apcupsd</label>
+        <type>checkbox</type>
+        <help>Enable the collection of apcupsd metrics.</help>
+    </field>
+    <field>
+        <id>input.apcupsd_server</id>
+        <label>Apcupsd Netserver IP Address</label>
+        <type>text</type>
+        <help>IP address or hostname of the apcupsd net information server. Default address is 127.0.0.1</help>
+    </field>
+</form>

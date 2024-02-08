@@ -1,0 +1,184 @@
+FRRouting (FRR) is an IP routing protocol suite for Linux and Unix
+platforms which includes protocol daemons for BGP, IS-IS, LDP, OSPF,
+PIM, and RIP.
+
+FRR's seamless integration with the native Linux/Unix IP networking stacks
+makes it applicable to a wide variety of use cases including connecting
+hosts/VMs/containers to the network, advertising network services, LAN
+switching and routing, Internet access routers, and Internet peering.
+
+WWW: https://frrouting.org/
+
+Plugin Changelog
+================
+
+1.39
+
+* Add plain password authentication to OSPF
+
+1.38
+
+* Add "soft-reconfiguration inbound" neighbor option
+
+1.37
+
+* Add Adjacency Logging to OSPF
+
+1.36
+
+* Added default-information originate option for OSPFv3
+
+1.35
+
+* Added automatic OSPFv3 firewall rules and opt-out automatic rule switch (contributed by Bill Gertz)
+
+1.34
+
+* Add checkbox to log BGP neighbor changes
+* Add BFD support (contributed by Mark Stitson)
+* Switch to FRR version 8
+* Rewrote diagnostics API
+
+1.33
+
+* Allow both IPv4 and IPv6 in BGP via setkey (contributed by as8net)
+
+1.32
+
+* Add attribute-unchanged option (contributed by Patrik Kernstock)
+
+1.31
+
+* Set no bgp default ipv4-unicast (contributed by vnxme)
+* Increase artifical BGP GUI ID limits (contributed by Patrik Kernstock)
+* Add BGP Network Import-Check (contributed by Patrik Kernstock)
+* Assorted GUI fixes (contributed by Patrik Kernstock)
+
+1.30
+
+* Allow specifying multiple PrefixLists and CommunityLists (contributed by Patrik Kernstock)
+
+1.29
+
+* Add disable-connected-check option and BGP weight option
+
+1.28
+
+* OSPF6 Interface change networktype and interfacename to dropdown in stead of multi select
+* Diagnostics / BGP - fix search in grid, should only use a formatter for presentation purposes
+* Add ospf6 carp demotion event handler
+* Allow BGP prefix-list number up to 10000 instead of 99
+
+1.27
+
+* Add BGP password authentication
+
+1.26
+
+* Fix Model migration errors
+
+1.25
+
+* Add "All" option to next-hop-self command (#2673)
+
+1.24
+
+* Add AS-Override (#2517)
+
+1.23
+
+* Add route-reflector-client to BGP neighbor config
+* bugfix: BGP Prefix List "IP version" field appears to be ineffective (#2602)
+* feature: IPv6 link-local neighbors require an interface to be specified (#2604)
+* feature: multiprotocol BGP sessions are not supported (#2606)
+* bugfix: Multiple BGP peers causes config generation error (#2623)
+
+1.22
+
+* Add BFD support
+* Add support for agentx (contributed by Joshua Schmidlkofer)
+
+1.21
+
+* Deprecate Ruby parser for FRR diagnostic output, remove Ruby dependency
+* Use FRR's json output where available
+* Introduce Python parser for FRR output where json is not (yet) available
+* Streamline diagnostic action names
+* Streamline diagnostic API endpoint names
+* Add diagnostic action and API endpoint for BGP neighbors
+* Webif Diagnostics/General: Fix routing tables
+* Webif Diagnostics/General: Align routing table style with other pages
+* Webif Diagnostics/OSPF: Correctly display areas in "Overview" tab
+* Webif Diagnostics/OSPF: Fix area rendering to "NaN" in "Route Table" tab
+* Webif Diagnostics/OSPF: Use only one table in "Route Table" tab
+* Webif Diagnostics/OSPF: Add mouseover hints to Type column in "Route Table" tab
+* Webif Diagnostics/OSPF: Slight presentation adjustments in "Neighbor" tab
+* Webif Diagnostics/OSPFv3: Fix age and sequence number rendering to "NaN" in "Database" tab
+* Webif Diagnostics/BGP: Rename page from "BGPv4" to just "BGP"
+* Webif Diagnostics/BGP: Replace "Overview" tab with distinct "IPv4 Routing Table" and "IPv6 Routing table" tabs
+* Webif Diagnostics/BGP: Align routing table style with other pages
+* Webif Diagnostics/BGP: Add Neighbors tab
+
+1.20
+
+* Allow to adjust reference cost for OSPF calculation
+* Add configuration profile selection
+
+1.19
+
+* OSPF influence interface cost via carp
+* Uniform logging
+
+1.18
+
+* Add description fields to BGP tabs
+* Add BGP community-lists
+* Add option for BGP graceful restart
+* Allow to set BGP neighbor timers
+
+1.17
+
+* Fix templating for BGP AS-Path Lists (by Steve Buzonas)
+
+1.16
+
+* Fix templating for router IDs in OSPF3 daemon
+
+1.15
+
+* Disable eBGP policies introduced with FRR 7.4
+
+1.14
+
+* fix null route issue in parsing
+* add missing via column to routing table for IPv4 (v6 already has it)
+* show BGP status page: also show IPv6 routes
+
+1.13
+
+* Fix wrong match statement for IPv6 route-maps
+* Allow to set default-metric for RIP protocol
+
+1.12
+
+* Add passive-interface to OSPFv3 (by Michael Muenz)
+* Allow to set area per interface for OSPFv2 (by @twoequaldots)
+* Allow to set ebgp-multihop in BGP (by @bpeavy and Greg Goodrich)
+
+1.11
+
+* Add route-map support to redistribution in OSPF
+* Only allow custom set of characters in BGP prefix-lists and route-maps
+
+1.10
+
+* XMLRPC sync support
+* CARP failover support
+
+1.9
+
+* Allow usage of VTI IPSec interfaces
+
+1.8
+
+* Add area range in OSPF config

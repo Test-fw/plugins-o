@@ -1,0 +1,9 @@
+<acl>
+   <page-services-ftpproxy>
+      <name>Services: FTP Proxy</name>
+      <patterns>
+         <pattern>ui/ftpproxy/*</pattern>
+         <pattern>api/ftpproxy/*</pattern>
+      </patterns>
+   </page-services-ftpproxy>
+</acl>
